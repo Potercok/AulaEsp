@@ -25,9 +25,14 @@ class SpecialtyController extends Controller
         $rules = [
             'nombre'=>'required|min:3',
             'asignatura'=>'required',
-            'trimestre'=>'required',
-            'hora'=>'required',
-            'grado'=>'required',
+            
+            'trimestre'=>'required|numeric',
+
+            'fecha'=>'required',
+            'hora_inicio'=>'required',
+            'hora_fin'=>'required',
+
+            'grado'=>'required|numeric',
             'seccion'=>'required',
             'aprendizaje'=>'required',
             'articula'=>'required',
@@ -37,21 +42,31 @@ class SpecialtyController extends Controller
             'nombre.required'=>'Se requiere el nombre',
             'nombre.min'=>'Se requiere un nombre valido',
             'trimestre.required'=>'Se requiere el trimestre',
-            'hora.required'=>'Se requiere la hora',
+            'trimestre.numeric'=>'Trimestre debe ser un valor numerico',
+            'fecha.required'=>'Se requiere la fecha',
+            'hora_inicio.required'=>'Se requiere la hora de inicio',
+            'hora_fin.required'=>'Se requiere la hora de finalizacion',
             'grado.required'=>'Se requiere el grado',
+            'grado.numeric'=>'Grado debe ser un valor numerico',
             'seccion.required'=>'Se requierela seccion',
             'aprendizaje.required'=>'Se requiere el aprendizaje',
             'articula.required'=>'Se requiere una repuesta (si o no)',
             'estrategias.required'=>'Se requiere una estrategia'
             
         ];
+
         $this->validate($request,$rules,$messages);
 
         $specialty = new Specialty();
         $specialty->nombre = $request->input('nombre');
         $specialty->asignatura = $request->input('asignatura');
         $specialty->trimestre = $request->input('trimestre');
-        $specialty->hora = $request->input('hora');
+
+        //Datos de horarios
+        $specialty->fecha= $request->input('fecha');
+        $specialty->hora_inicio = $request->input('hora_inicio');
+        $specialty->hora_fin = $request->input('hora_fin');
+
         $specialty->grado = $request->input('grado');
         $specialty->seccion = $request->input('seccion');
         $specialty->aprendizaje = $request->input('aprendizaje');
