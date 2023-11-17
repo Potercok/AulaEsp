@@ -14,6 +14,7 @@
          </div>
     </div>
     <div class="card-body">
+
         @if($errors->any())
             @foreach($errors->all() as $error)
             <div class="alert alert-danger" role="alert">
@@ -36,10 +37,43 @@
                 <label for="description">Trimestre</label>
                 <input type="integer" name="trimestre" class="form-control" value="{{old('trimestre')}}" required>
             </div>
+
             <div class="form-group">
-                <label for="description">Hora</label>
-                <input type="integer" name="hora" class="form-control" value="{{old('hora')}}" required>
+                <label for="description">Fecha</label>
+                <input type="date" name="fecha" class="form-control" value="{{old('fecha')}}" required>
             </div>
+
+
+            <div class="form-group">
+                <label for="hora_inicio">Hora de Inicio</label>
+                <select name="hora_inicio" class="form-control" required>
+                    @for ($i = 7; $i <= 18; $i++)
+                        @foreach (['00', '30'] as $minuto)
+                            @php
+                                $hora = $i < 10 ? '0'.$i : $i;
+                                $horaCompleta = $hora . ':' . $minuto;
+                            @endphp
+                            <option value="{{ $horaCompleta }}">{{ $horaCompleta }}</option>
+                        @endforeach
+                    @endfor
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label for="hora_fin">Hora de Fin</label>
+                <select name="hora_fin" class="form-control" required>
+                    @for ($i = 7; $i <= 18; $i++)
+                        @foreach (['00', '30'] as $minuto)
+                            @php
+                                $hora = $i < 10 ? '0'.$i : $i;
+                                $horaCompleta = $hora . ':' . $minuto;
+                            @endphp
+                            <option value="{{ $horaCompleta }}">{{ $horaCompleta }}</option>
+                        @endforeach
+                    @endfor
+                </select>
+            </div>
+
             <div class="form-group">
                 <label for="description">Grado</label>
                 <input type="integer" name="grado" class="form-control" value="{{old('grado')}}" required>
@@ -75,6 +109,7 @@
 
             <button type="submit" class="btn btn-sm btn-primary">Crear Resarva</button>
         </form>
+
     </div>
 </div>
 
