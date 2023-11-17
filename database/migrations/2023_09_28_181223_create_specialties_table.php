@@ -12,12 +12,17 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('specialties', function (Blueprint $table) {
+
             $table->increments('id');
             $table->string('nombre');
             $table->string('asignatura');
-            $table->date('dia');
             $table->integer('trimestre');
-            $table->integer('hora');
+
+            //Horarios de reserva
+            $table->date('fecha');
+            $table->time('hora_inicio');
+            $table->time('hora_fin');
+
             $table->integer('grado');
             $table->string('seccion');
             $table->string('aprendizaje');
@@ -27,8 +32,7 @@ return new class extends Migration
             $table->string('descripcion');
             $table->string('observaciones') ->nullable();
             $table->timestamps();
-            // Agregar el constraint UNIQUE para dia y hora
-            $table->unique(['dia', 'hora']);
+
         });
     }
 

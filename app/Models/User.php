@@ -2,21 +2,17 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Tymon\JWTAuth\Contracts\JWTSubject;
+use Spatie\Permission\Traits\HasRoles; // Import the HasRoles class
 
 class User extends Authenticatable implements JWTSubject
 {
-    use HasApiTokens, HasFactory, Notifiable ;
-    public function activityLogs()
-    {
-        return $this->hasMany(ActivityLog::class);
-    }
-    
+    use HasApiTokens, HasFactory, Notifiable, HasRoles; // Use the HasRoles trait
+
     /**
      * The attributes that are mass assignable.
      *
@@ -48,12 +44,10 @@ class User extends Authenticatable implements JWTSubject
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
     public function getJWTIdentifier()
     {
         return $this->getKey();
-    }
-    public function asDocenteAppointments(){
-        return $this->hasMany(Specialty::class,'user_id');
     }
 
     /**
@@ -64,11 +58,5 @@ class User extends Authenticatable implements JWTSubject
     public function getJWTCustomClaims()
     {
         return [];
-    }
-    public function scopeDocentes($query)
-    {
-        return $query->where('id','>=',1);
-        
-        
     }
 }

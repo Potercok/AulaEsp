@@ -6,7 +6,14 @@ use Illuminate\Support\Facades\Route;
 Route::post('/login', [App\Http\Controllers\Api\AuthController::class, 'login']);
 Route::middleware('auth:api')->group(function(){
     Route::post('/logout', [App\Http\Controllers\Api\AuthController::class, 'logout']);
-    Route::get('/appointments', [App\Http\Controllers\Api\AppointmentController::class, 'index']);
-    Route::post('/appointments', [App\Http\Controllers\Api\AppointmentController::class, 'store']);
+});
 
+Route::group(['prefix'=> 'reservas','as'=>'reserva.'], function() {
+    Route::middleware('auth:api')->group(function(){
+        Route::get('/', [App\Http\Controllers\Api\ReservasController::class, 'index']);
+        Route::post('/', [App\Http\Controllers\Api\ReservasController::class, 'store']);
+        Route::get('/{id}', [App\Http\Controllers\Api\ReservasController::class, 'show']);
+        Route::put('/{id}', [App\Http\Controllers\Api\ReservasController::class, 'update']);
+        Route::delete('/{id}', [App\Http\Controllers\Api\ReservasController::class, 'destroy']);
+    });
 });
