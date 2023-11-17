@@ -26,7 +26,9 @@
              <tr>
                  <th scope= "col">Nombre </th>
                  <th scope= "col" >Asignatura</th>
+                 <th scope= "col" >Dia</th>
                  <th scope= "col" >Hora</th>
+                 <th scope= "col" >Seccion</th>
                  <th scope= "col">Grado </th>
                  <th scope="col" >Opciones </th>
                  <!--<th scope="col" >Bounce rate</th>-->
@@ -35,17 +37,23 @@
             <tbody>
                 @foreach($specialties as $especialidad)
                 <tr>
-                    <th scope="row">
+                    <th >
                         {{$especialidad->nombre}}
                     </th>
                     <td>
                         {{$especialidad->asignatura}}
                     </td>
-                    <td>
-                        {{$especialidad->hora}}
+                    <td scope="row">
+                        {{$especialidad->dia}}
                     </td>
                     <td>
-                        {{$especialidad->grado}}
+                        {{$especialidad->hora_format}}
+                    </td>
+                    <td>
+                        {{$especialidad->seccion}}
+                    </td>
+                    <td>
+                        {{$especialidad->grado}}°
                     </td>
                     <td>
                     

@@ -15,7 +15,8 @@ return new class extends Migration
             $table->increments('id');
             $table->string('nombre');
             $table->string('asignatura');
-            $table->integer('trimmestre');
+            $table->date('dia');
+            $table->integer('trimestre');
             $table->integer('hora');
             $table->integer('grado');
             $table->string('seccion');
@@ -26,6 +27,8 @@ return new class extends Migration
             $table->string('descripcion');
             $table->string('observaciones') ->nullable();
             $table->timestamps();
+            // Agregar el constraint UNIQUE para dia y hora
+            $table->unique(['dia', 'hora']);
         });
     }
 
