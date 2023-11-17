@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Http\Controllers\Controller;
 
 class DocenteController extends Controller
 {
@@ -12,7 +13,8 @@ class DocenteController extends Controller
      */
     public function index()
     {
-        $docentes = User::all();
+        //$docentess = User::docentes()->get();
+        $docentes = User::docentes()->paginate(10);
         return view('docentes.index',compact('docentes'));
     }
 
@@ -66,9 +68,9 @@ class DocenteController extends Controller
     }
 
   
-    public function edit($id)
+    public function edit(string $id)
     {
-        $docente = User::docentes()->find($id);
+        $docente = User::docentes()->findOrFail($id);
         return view ('docentes.edit', compact('docente'));
     }
 
@@ -92,27 +94,28 @@ class DocenteController extends Controller
             'role.min' => 'ingresa el tipo de usuario debde der ser "admin" o "docente"'
         ];
         $this -> validate($request, $rules, $messages);
-        $user =User::docentes()->find($id);
+        $user = User::docentes()->findOrFail($id);
 
-        $data = $request -> only ('name','email','password','role');
+        $data = $request -> only ('name','email','role');
         $password = $request->input('password');
 
-        if($password)
-        $data['password'] = bcrypt($password);
-
+        if($password)   {
+            $data['password'] = bcrypt($password);
+        }
         $user->fill($data);
         $user->save();
+
        
-            $notification = 'La informacion del docente se ah actualizado exitosamente.';
+        $docenteName = $user->name;
+       
+            $notification = "La informacion del docente $docenteName se ah actualizado exitosamente.";
             return redirect('/docentes')->with(compact('notification'));
-
-
     }
 
   
     public function destroy($id)
     {
-        $user = User::docentes()->find($id);
+        $user = User::docentes()->findOrFail($id);
         $docenteName = $user->name;
         $user->delete();
         $notification = "El dcoente $docenteName se elimino correctamente";

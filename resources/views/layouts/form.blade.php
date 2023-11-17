@@ -27,8 +27,11 @@
         <div class="header-body text-center mb-7">
           <div class="row justify-content-center">
             <div class="col-lg-5 col-md-6">
+            <img src="{{ asset('img/brand/favicon.png') }}" alt="" width="210" height="210" alt="..."></img>
               <h1 class="text-white">Bienvenido!</h1>
-              <p class="text-lead text-light">Escuela secundaria general benito juarez</p>
+              <p class="text-lead text-light">ESCUELA SECUNDARIA GENERAL "BENITO JUAREZ"</p>
+              <p class="text-lead text-light">CLAVE: 10DES0008P</p>
+              <p class="text-lead text-light">ZONA ESCOLAR: 5</p>
             </div>
           </div>
         </div>
@@ -78,7 +81,7 @@
                     <div class="input-group-prepend">
                       <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
                     </div>
-                    <input class="form-control" placeholder="Contraseña" type="password" name="password" required autocomplete="current-password">
+                    <input class="form-control" placeholder="Contraseña" type="password" name="password" required autocomplete="current-password" maxlength="10">
                   </div>
                 </div>
                 <div class="custom-control custom-control-alternative custom-checkbox">
@@ -107,12 +110,12 @@
     </div>
 
   </div>
-  <!--   Core   -->
-  <script src="../assets/js/plugins/jquery/dist/jquery.min.js"></script>
-  <script src="../assets/js/plugins/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  <!--   Core href="{{ asset('css/argon-dashboard.css?v=1.1.2') }}"   -->
+  <script src="{{asset('js/plugins/jquery/dist/jquery.min.js')}}"></script>
+  <script src="{{ asset('js/plugins/bootstrap/dist/js/bootstrap.bundle.min.js') }}"></script>
   <!--   Optional JS   -->
   <!--   Argon JS   -->
-  <script src="../assets/js/argon-dashboard.min.js?v=1.1.2"></script>
+  <script src="{{asset('js/argon-dashboard.min.js?v=1.1.2')}}"></script>
   <script src="https://cdn.trackjs.com/agent/v3/latest/t.js"></script>
   <script>
     window.TrackJS &&

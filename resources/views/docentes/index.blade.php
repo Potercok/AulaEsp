@@ -25,9 +25,9 @@
          <thead class= "thead-light">
              <tr>
                  <th scope= "col">Nombre </th>
+               
                  <th scope= "col" >Correo</th>
                  <th scope="col" >Rol </th>
-                 <th scope= "col" >Contraseña</th>
                  <th scope="col" >Opciones </th>
                  <!--<th scope="col" >Bounce rate</th>-->
              </tr>
@@ -45,9 +45,6 @@
                         {{$docente->role}}
                     </td>
                     <td>
-                        {{$docente->remember_token}}
-                    </td>
-                    <td>
                     <form action="{{url('/docentes/'.$docente->id)}}" method="POST">
                         @csrf
                         @method('DELETE')
@@ -62,7 +59,11 @@
         </table>
     </div>
 </div>
-
+<div class="card-body">
+    {{
+        $docentes->links()
+    }}
+</div>
 
 
 @endsection

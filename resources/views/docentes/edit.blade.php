@@ -39,12 +39,22 @@
             </div>
             <div class="form-group">
                 <label for="password">Contraseña</label>
-                <input type="text" name="password" class="form-control" >
+                <input type="text" name="password" class="form-control"   >
                 <small class="text-warning">Solo llena el campo si deseas cambiar la contraseña</small>
             </div>
-            <div class="form-group">
+            <!--<div class="form-group">
                 <label for="role">rol</label>
                 <input type="text" name="role" class="form-control" value="{{old('role',$docente->role)}}">
+            </div>-->
+            <div class="form-group">
+                <label for="role">Rol:</label>
+                <small class="text-muted">Verifica el rol </small>
+            </div>
+            <div class="form-group">
+                <input type="radio" name="role" value="admin" > Administrador
+            </div>
+            <div class="form-group">
+                <input type="radio" name="role" value="docente"> Docente
             </div>
 
 

@@ -38,11 +38,18 @@
             </div>
             <div class="form-group">
                 <label for="password">Contraseña</label>
+                <small class="text-muted">Esta contraseña es aleatoria puede cambiarla o bien recordar esta misma</small>
                 <input type="integer" name="password" class="form-control" value="{{old('password',Str::random(8))}}" required>
             </div>
             <div class="form-group">
-                <label for="role">rol</label>
-                <input type="integer" name="role" class="form-control" value="{{old('role')}}" required>
+                <label for="role">Rol:</label>
+                <small class="text-muted">Verifica el rol </small>
+            </div>
+            <div class="form-group">
+                <input type="radio" name="role" value="admin" > Administrador
+            </div>
+            <div class="form-group">
+                <input type="radio" name="role" value="docente" checked> Docente
             </div>
 
 

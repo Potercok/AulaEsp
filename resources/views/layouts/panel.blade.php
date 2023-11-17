@@ -26,9 +26,7 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <!-- Brand -->
-      <a class="navbar-brand pt-0" href="{{url ('/home')}}">
-        <img src="{{ asset('img/brand/favicon.png') }}" class="navbar-brand-img" alt="...">
-      </a>
+      
       <!-- Usuario superior derecha -->
       <ul class="nav align-items-center d-md-none">
         <li class="nav-item dropdown">
@@ -81,7 +79,7 @@
     <nav class="navbar navbar-top navbar-expand-md navbar-dark" id="navbar-main">
       <div class="container-fluid">
         <!-- Brand -->
-        <a class="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block" >bienvenido {{auth()->user()->name}}</a>
+        <a class="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block" >bienvenid(@) {{auth()->user()->name}}</a>
         <!-- Form -->
        <!--  -->
         <!-- opciones en usuario (parte superior derecha con foto)OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO -->
@@ -105,6 +103,9 @@
   <!--   Optional JS   -->
   <script src="{{ asset('js/plugins/chart.js/dist/Chart.min.js') }}"></script>
   <script src="{{ asset('js/plugins/chart.js/dist/Chart.extension.js') }}"></script>
+  
+  @yield('scripts')
+
   <!--   Argon JS   -->
   <script src="{{ asset('js/argon-dashboard.min.js?v=1.1.2') }}"></script>
   <script src="https://cdn.trackjs.com/agent/v3/latest/t.js"></script>
