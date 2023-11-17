@@ -15,7 +15,7 @@ return new class extends Migration
             $table->increments('id');
             $table->string('nombre');
             $table->string('asignatura');
-            $table->integer('trimmestre');
+            $table->integer('trimestre');
             $table->integer('hora');
             $table->integer('grado');
             $table->string('seccion');
