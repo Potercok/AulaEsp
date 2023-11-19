@@ -9,18 +9,25 @@ use Illuminate\Http\Request;
 
 class Specialty extends Model
 {
-    /*
+
+    use HasFactory;
+
     protected $fillable = [
-        'hora'
-    ];
-    protected $hidden = [
-        'hora'
+        'nombre',
+        'asignatura',
+        'trimestre',
+        'fecha',
+        'hora',
+        'grado',
+        'seccion',
+        'aprendizaje',
+        'consideraciones',
+        'articula',
+        'estrategias',
+        'descripcion',
+        'observaciones',
     ];
 
-    protected $appends = [
-        'hora_12'
-    ];*/
-    use HasFactory;
     public function user() {
         return $this->belongsTo(User::class);
     }

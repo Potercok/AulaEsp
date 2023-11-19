@@ -10,13 +10,15 @@
               <i class="ni ni-tv-2 text-primary"></i> Pagina principal
             </a>
           </li>
-          @if(auth()->user()->role == 'docente')
-          <li class="nav-item">
-            <a class="nav-link " href="{{ url('/especialidades') }}">
-              <i class="ni ni-archive-2 text-blue"></i> Mis Reservass
-            </a>
-          </li>
+          
+          @if(auth()->user()->role == 'docente' || auth()->user()->role == 'admin')
+            <li class="nav-item">
+              <a class="nav-link " href="{{ url('/especialidades') }}">
+                <i class="ni ni-archive-2 text-blue"></i> Mis Reservas
+              </a>
+            </li>
           @endif
+
           
           <!--<li class="nav-item">
             <a class="nav-link " href="./examples/profile.html">
@@ -45,7 +47,7 @@
           @endif
           <li class="nav-item">
             <a class="nav-link " href="{{url('/bitacora')}}">
-              <i class="ni ni-bullet-list-67 text-red"></i> bitacora
+              <i class="ni ni-bullet-list-67 text-red"></i> Bitacora
             </a>
           </li>
           <li class="nav-item">

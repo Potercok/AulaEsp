@@ -17,7 +17,10 @@ return new class extends Migration
             $table->string('asignatura');
             $table->date('dia');
             $table->integer('trimestre');
-            $table->integer('hora');
+
+            //
+            $table->time('hora');
+  
             $table->integer('grado');
             $table->string('seccion');
             $table->string('aprendizaje');
