@@ -2,22 +2,21 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EventController;
-
 use App\Http\Controllers\EstadisticasController;
 use App\Http\Controllers\BitacoraController;
 use App\Models\Bitacora;
 use App\Models\Docente;
 use App\Models;
-use Illuminate\Support\Facades\Auth;
-
 use App\Http\Controllers\Docentes\SpecialtyController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ActivityLogController;
+use Illuminate\Support\Facades\Auth; 
 
 Route::get('/', function () {
     return view('auth/login');
 }
 );
+
 Auth::routes();
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('/events', [EventController::class, 'index']);
@@ -62,13 +61,3 @@ Route::post('/password/reset', 'App\Http\Controllers\Auth\ResetPasswordControlle
 Route::get('/email/verify', 'App\Http\Controllers/Auth\VerificationController@show')->name('verification.notice');
 Route::get('/email/verify/{id}', 'App\Http\Controllers/Auth\VerificationController@verify')->name('verification.verify');
 Route::post('/email/resend', 'App\Http\Controllers/Auth\VerificationController@resend')->name('verification.resend');
-
-
-
-
-
-
-
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
