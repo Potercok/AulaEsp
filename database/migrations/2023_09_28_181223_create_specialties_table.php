@@ -12,16 +12,15 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('specialties', function (Blueprint $table) {
+            $table->bigIncrements('id');
 
-            $table->increments('id');
             $table->string('nombre');
             $table->string('asignatura');
             $table->integer('trimestre');
 
             //Horarios de reserva
-            $table->date('fecha');
-            $table->time('hora_inicio');
-            $table->time('hora_fin');
+            $table->date('dia');
+            $table->time('hora');          
 
             $table->integer('grado');
             $table->string('seccion');
