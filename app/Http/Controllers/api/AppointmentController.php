@@ -45,9 +45,8 @@ class AppointmentController extends Controller
         $specialty->trimestre = $request->input('trimestre');
 
         //Datos de horarios
-        $specialty->fecha= $request->input('fecha');
-        $specialty->hora_inicio = $request->input('hora_inicio');
-        $specialty->hora_fin = $request->input('hora_fin');
+        $specialty->fecha= $request->input('dia');
+        $specialty->hora_inicio = $request->input('hora');
 
         $specialty->grado = $request->input('grado');
         $specialty->seccion = $request->input('seccion');
