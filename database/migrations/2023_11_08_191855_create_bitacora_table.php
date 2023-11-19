@@ -15,7 +15,7 @@ class CreateBitacoraTable extends Migration
     {
         Schema::create('bitacora', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained('specialties');
+            $table->foreignId('user_id')->constrained('users');
             $table->integer('veces_reservado');
             $table->string('grado');
             $table->string('seccion');

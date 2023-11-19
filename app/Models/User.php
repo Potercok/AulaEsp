@@ -6,13 +6,19 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Spatie\Permission\Traits\HasRoles;
 use Tymon\JWTAuth\Contracts\JWTSubject;
 use Spatie\Permission\Traits\HasRoles; // Import the HasRoles class
 
 class User extends Authenticatable implements JWTSubject
 {
-    use HasApiTokens, HasFactory, Notifiable, HasRoles; // Use the HasRoles trait
 
+    use HasApiTokens, HasFactory, Notifiable;
+    public function activityLogs()
+    {
+        return $this->hasMany(ActivityLog::class);
+    }
+    
     /**
      * The attributes that are mass assignable.
      *
