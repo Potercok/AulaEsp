@@ -18,12 +18,17 @@ class User extends Authenticatable implements JWTSubject
     {
         return $this->hasMany(ActivityLog::class);
     }
+
+
+
+    // Define a scope to filter docente users
     public function scopeDocentes($query)
     {
-        return $query->where('id','>=',1);
-        
-        
+        return $query->where('role', 'docente'); // Adjust the condition based on how you differentiate docentes in your database
     }
+    
+    
+
     /**
      * The attributes that are mass assignable.
      *
