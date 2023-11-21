@@ -58,10 +58,14 @@ class SpecialtyController extends Controller
         $this->validate($request,$rules,$messages);
 
         $specialty = new Specialty();
+
+        // Assign the user_id
+        $specialty->user_id = auth()->user()->id;
+
         $specialty->nombre = $request->input('nombre');
         $specialty->asignatura = $request->input('asignatura');
         $specialty->trimestre = $request->input('trimestre');
-        $specialty->dia= $request->input('dia');
+        $specialty->dia= $request->input('fecha');
         $hora = date('H:i:s', strtotime($request->input('hora')));
         $specialty->hora = $hora;
         $specialty->grado = $request->input('grado');
