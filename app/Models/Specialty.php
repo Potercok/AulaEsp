@@ -34,3 +34,5 @@ class Specialty extends Model
     public function asDocenteAppointments(){
         return $this->hasMany(Specialty::class,'user_id');
     }
+
+}

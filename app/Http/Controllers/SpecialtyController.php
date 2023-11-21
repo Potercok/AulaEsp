@@ -130,6 +130,7 @@ class SpecialtyController extends Controller
             $specialty->save();
             return redirect('/especialidades')->with(compact('notification'));
         }
+        
         public function destroy(Specialty $specialty){
             $deleteName = $specialty->nombre;
             $specialty->delete();
