@@ -30,10 +30,10 @@ Route::put('/especialidades/{specialty}', [SpecialtyController::class, 'update']
 Route::get('/especialidades/{specialty}/edit', [SpecialtyController::class, 'edit']);
 Route::post('/especialidades', [SpecialtyController::class, 'sendData']);
 Route::delete('/especialidades/{specialty}', [SpecialtyController::class, 'destroy']);
-Route::resource('activity_logs', ActivityLogController::class);
+//Route::resource('activity_logs', ActivityLogController::class);
 Route::get('/activity_logs/create', [ActivityLogController::class, 'create'])->name('activity_logs.create');
 Route::get('/activity_logs/{id}/edit', [ActivityLogController::class, 'edit'])->name('activity_logs.edit');
-Route::resource('activity_logs', ActivityLogController::class);
+//Route::resource('activity_logs', ActivityLogController::class);
 Route::get('/bitacora', [BitacoraController::class, 'index'])->name('bitacora.index');
 
 // Ruta para la descarga del PDF de la bitácora

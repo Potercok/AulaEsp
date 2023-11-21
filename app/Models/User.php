@@ -18,7 +18,12 @@ class User extends Authenticatable implements JWTSubject
     {
         return $this->hasMany(ActivityLog::class);
     }
-    
+    public function scopeDocentes($query)
+    {
+        return $query->where('id','>=',1);
+        
+        
+    }
     /**
      * The attributes that are mass assignable.
      *
