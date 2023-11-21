@@ -8,9 +8,9 @@ use App\Http\Controllers\Api\AppointmentController;
 Route::post('/login', [AuthController::class, 'login']);
 Route::middleware('auth:api')->group(function(){
     Route::post('/logout', [AuthController::class, 'logout']);
-}
+});
   
-Route::group(['prefix'=> 'reservas','as'=>'reserva.'], function() {
+Route::group(['prefix'=> 'reservas', 'as' =>'reserva.'], function() {
     Route::middleware('auth:api')->group(function(){
         Route::get('/', [AppointmentController::class, 'index']);
         Route::post('/', [AppointmentController::class, 'store']);

@@ -61,7 +61,7 @@ class SpecialtyController extends Controller
         $specialty->nombre = $request->input('nombre');
         $specialty->asignatura = $request->input('asignatura');
         $specialty->trimestre = $request->input('trimestre');
-        $specialty->dia= $request->input('dia')
+        $specialty->dia= $request->input('dia');
         $hora = date('H:i:s', strtotime($request->input('hora')));
         $specialty->hora = $hora;
         $specialty->grado = $request->input('grado');
