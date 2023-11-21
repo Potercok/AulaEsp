@@ -1,13 +1,19 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
+
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\BitacoraController;
-
 use App\Http\Controllers\SpecialtyController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ActivityLogController;
-use Illuminate\Support\Facades\Auth; 
+use App\Http\Controllers\Admin\DocenteController;
+use App\Http\Controllers\Auth\ForgotPasswordController;
+use App\Http\Controllers\EstadisticasController;
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\Auth\VerificationController;
 
 Route::get('/', function () {
     return view('auth/login');
@@ -21,8 +27,8 @@ Route::middleware(['auth', 'admin'])->group(function () {
 
     //rutas espacialidades = reservas
     //rutas de docentes
-    Route::resource('docentes','App\Http\Controllers\Admin\DocenteController');
-    Route::get('/estadisticas', [App\Http\Controllers\EstadisticasController::class, 'index']);
+    Route::resource('docentes', DocenteController::class);
+    Route::get('/estadisticas', [EstadisticasController::class, 'index']);
 });
 Route::get('/especialidades', [SpecialtyController::class, 'index']);
 Route::get('/especialidades/create', [SpecialtyController::class, 'create']);
@@ -40,21 +46,21 @@ Route::get('/bitacora', [BitacoraController::class, 'index'])->name('bitacora.in
 Route::get('/bitacora/pdf', [BitacoraController::class, 'generatePDF'])->name('bitacora.pdf');
 
 // Rutas de autenticación
-Route::get('/login', 'App\Http\Controllers\Auth\LoginController@showLoginForm')->name('login');
-Route::post('/login', 'App\Http\Controllers\Auth\LoginController@login');
-Route::post('/logout', 'App\Http\Controllers\Auth\LoginController@logout')->name('logout');
+Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
+Route::post('/login', [LoginController::class, 'login']);
+Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
 // Rutas de registro
-Route::get('/register', 'App\Http\Controllers\Auth\RegisterController@showRegistrationForm')->name('register');
-Route::post('/register', 'App\Http\Controllers\Auth\RegisterController@register');
+Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('register');
+Route::post('/register', [RegisterController::class, 'register']);
 
 // Rutas de restablecimiento de contraseña
-Route::get('/password/reset', 'App\Http\Controllers\Auth\ForgotPasswordController@showLinkRequestForm')->name('password.request');
-Route::post('/password/email', 'App\Http\Controllers\Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.email');
-Route::get('/password/reset/{token}', 'App\Http\Controllers\Auth\ResetPasswordController@showResetForm')->name('password.reset');
-Route::post('/password/reset', 'App\Http\Controllers\Auth\ResetPasswordController@reset');
+Route::get('/password/reset', [ForgotPasswordController::class,'showLinkRequestForm'])->name('password.request');
+Route::post('/password/email', [ForgotPasswordController::class,'sendResetLinkEmail'])->name('password.email');
+Route::get('/password/reset/{token}', [ForgotPasswordController::class,'showResetForm'])->name('password.reset');
+Route::post('/password/reset', [ForgotPasswordController::class,'reset']);
 
 // Rutas de confirmación de correo electrónico
-Route::get('/email/verify', 'App\Http\Controllers/Auth\VerificationController@show')->name('verification.notice');
-Route::get('/email/verify/{id}', 'App\Http\Controllers/Auth\VerificationController@verify')->name('verification.verify');
-Route::post('/email/resend', 'App\Http\Controllers/Auth\VerificationController@resend')->name('verification.resend');
+Route::get('/email/verify', [VerificationController::class, 'show'])->name('verification.notice');
+Route::get('/email/verify/{id}', [VerificationController::class, 'verify'])->name('verification.verify');
+Route::post('/email/resend', [VerificationController::class, 'resend'])->name('verification.resend');
