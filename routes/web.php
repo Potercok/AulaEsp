@@ -2,12 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EventController;
-use App\Http\Controllers\EstadisticasController;
 use App\Http\Controllers\BitacoraController;
-use App\Models\Bitacora;
-use App\Models\Docente;
-use App\Models;
-use App\Http\Controllers\Docentes\SpecialtyController;
+
+use App\Http\Controllers\SpecialtyController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ActivityLogController;
 use Illuminate\Support\Facades\Auth; 

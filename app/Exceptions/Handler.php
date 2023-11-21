@@ -3,7 +3,6 @@
 namespace App\Exceptions;
 
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
-use Illuminate\Auth\AuthenticationException; // Add this import statement
 use Throwable;
 use Illuminate\Auth\AuthenticationException;
 
@@ -37,10 +36,5 @@ class Handler extends ExceptionHandler
             return response()->json(['error' => 'No autenticado o credenciales inválidas'], 401);
         });
 
-        // Manejar excepciones de autenticación
-        $this->renderable(function (AuthenticationException $e, $request) { // Update the type hint here
-            // Aquí puedes personalizar tu respuesta. Por ejemplo, puedes devolver un error en formato JSON.
-            return response()->json(['error' => 'No autenticado o credenciales inválidas'], 401);
-        });
     }
 }

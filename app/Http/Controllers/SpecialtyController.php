@@ -61,11 +61,9 @@ class SpecialtyController extends Controller
         $specialty->nombre = $request->input('nombre');
         $specialty->asignatura = $request->input('asignatura');
         $specialty->trimestre = $request->input('trimestre');
-
-        //Datos de horarios
-        $specialty->fecha= $request->input('dia');
-        $specialty->hora_inicio = $request->input('hora');
-
+        $specialty->dia= $request->input('dia');
+        $hora = date('H:i:s', strtotime($request->input('hora')));
+        $specialty->hora = $hora;
         $specialty->grado = $request->input('grado');
         $specialty->seccion = $request->input('seccion');
         $specialty->aprendizaje = $request->input('aprendizaje');
@@ -132,6 +130,7 @@ class SpecialtyController extends Controller
             $specialty->save();
             return redirect('/especialidades')->with(compact('notification'));
         }
+        
         public function destroy(Specialty $specialty){
             $deleteName = $specialty->nombre;
             $specialty->delete();
