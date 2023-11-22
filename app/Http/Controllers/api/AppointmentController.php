@@ -14,7 +14,8 @@ class AppointmentController extends Controller
      */
     public function index()
     {
-        $reservas = Specialty::all();
+        $idUsuario = auth()->user()->id;
+        $reservas = Specialty::where('user_id', $idUsuario)->get();
         return response()->json($reservas);
     }
 

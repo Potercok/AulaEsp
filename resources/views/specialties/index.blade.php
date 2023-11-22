@@ -5,7 +5,7 @@
     <div class= "card-header border-0">
      <div class="row align-items-center">
          <div class= "col">
-             <h3 class= "mb-0">Resarvas</h3>
+             <h3 class= "mb-0">Reservas</h3>
          </div>
          <div class= "col text-right">
              <a href="{{url ('/especialidades/create')}}" class="btn btn-sm btn-primary" >Nueva Reserva</a>
@@ -47,7 +47,7 @@
                         {{$especialidad->dia}}
                     </td>
                     <td>
-                        {{$especialidad->hora_format}}
+                        {{$especialidad->hora}}
                     </td>
                     <td>
                         {{$especialidad->seccion}}
