@@ -80,8 +80,8 @@
                 <div class="input-group-prepend">
                     <span class="input-group-text"><i class="ni ni-calendar-grid-58"></i></span>
                 </div>
-                    <input id="dia" name="dia" class="form-control datepicker" placeholder="Selecciona fecha" 
-                    type="text" value="{{old('dia',$specialty->dia)}}" data-date-format="yyyy-mm-dd" 
+                    <input id="fecha" name="fecha" class="form-control datepicker" placeholder="Selecciona fecha" 
+                    type="text" value="{{old('fecha',$specialty->dia)}}" data-date-format="yyyy-mm-dd" 
                     data-date-start-date="{{date('Y-m-d')}}"
                     data-date-end-date="+30d">
             </div>
