@@ -43,45 +43,43 @@
                 <input type="date" name="fecha" class="form-control" value="{{old('fecha')}}" required>
             </div>
 
-
             <div class="form-group">
-                <label for="hora_inicio">Hora de Inicio</label>
-                <select name="hora_inicio" class="form-control" required>
-                    @for ($i = 7; $i <= 18; $i++)
-                        @foreach (['00', '30'] as $minuto)
-                            @php
-                                $hora = $i < 10 ? '0'.$i : $i;
-                                $horaCompleta = $hora . ':' . $minuto;
-                            @endphp
-                            <option value="{{ $horaCompleta }}">{{ $horaCompleta }}</option>
-                        @endforeach
-                    @endfor
-                </select>
-            </div>
-            
-            <div class="form-group">
-                <label for="hora_fin">Hora de Fin</label>
-                <select name="hora_fin" class="form-control" required>
-                    @for ($i = 7; $i <= 18; $i++)
-                        @foreach (['00', '30'] as $minuto)
-                            @php
-                                $hora = $i < 10 ? '0'.$i : $i;
-                                $horaCompleta = $hora . ':' . $minuto;
-                            @endphp
-                            <option value="{{ $horaCompleta }}">{{ $horaCompleta }}</option>
-                        @endforeach
-                    @endfor
+            <label for="description">Hora:</label>
+                <select name="hora" class="form-control" value="{{old('hora')}}" required>
+                    <option  disabled selected>-Elige una Hora-</option>
+                    <option value="07:00:00"{{ old ('hora') == '1' ? 'selected' : '' }}>1ª</option>
+                    <option value="08:00:00"{{ old ('hora') == '2' ? 'selected' : '' }}>2ª</option>
+                    <option value="09:00:00"{{ old ('hora') == '3' ? 'selected' : '' }}>3ª</option>
+                    <option value="10:00:00"{{ old ('hora') == '4' ? 'selected' : '' }}>4ª</option>
+                    <option value="11:00:00"{{ old ('hora') == '5' ? 'selected' : '' }}>5ª</option>
+                    <option value="12:00:00"{{ old ('hora') == '6' ? 'selected' : '' }}>6ª</option>
+                    <option value="13:00:00"{{ old ('hora') == '7' ? 'selected' : '' }}>7ª</option>
                 </select>
             </div>
 
             <div class="form-group">
-                <label for="description">Grado</label>
-                <input type="integer" name="grado" class="form-control" value="{{old('grado')}}" required>
+            <label for="description">Grado:</label>
+            <select name="grado" class="form-control"  value="{{old('grado')}}" required>
+                <option  disabled selected>-Elige un Grado-</option>
+                <option value="1"{{ old ('grado') == '1' ? 'selected' : '' }}>1</option>
+                <option value="2"{{ old ('grado') == '2' ? 'selected' : '' }}>2</option>
+                <option value="3"{{ old ('grado') == '3' ? 'selected' : '' }}>3</option>
+            </select>
             </div>
+
             <div class="form-group">
-                <label for="description">Seccion</label>
-                <input type="integer" name="seccion" class="form-control" value="{{old('seccion')}}" required>
+            <label for="description">Seccion:</label>
+            <select name="seccion" class="form-control" value="{{old('seccion')}}" required>
+                <option  disabled selected>-Elige una Seccion-</option>
+                <option value="A"{{ old ('seccion') == 'A' ? 'selected' : '' }}>A</option>
+                <option value="B"{{ old ('seccion') == 'B' ? 'selected' : '' }}>B</option>
+                <option value="C"{{ old ('seccion') == 'C' ? 'selected' : '' }}>C</option>
+                <option value="D"{{ old ('seccion') == 'D' ? 'selected' : '' }}>D</option>
+                <option value="E"{{ old ('seccion') == 'E' ? 'selected' : '' }}>E</option>
+                <option value="F"{{ old ('seccion') == 'F' ? 'selected' : '' }}>F</option>
+            </select>
             </div>
+
             <div class="form-group">
                 <label for="description">Aprendizaje</label>
                 <input type="text" name="aprendizaje" class="form-control" value="{{old('aprendizaje')}}" required>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Specialty;
+use Illuminate\Support\Facades\Log;
 
 class SpecialtyController extends Controller
 {
@@ -15,11 +16,19 @@ class SpecialtyController extends Controller
     //
     public function index()
     {  
-        $specialties = Specialty::all();  
+        $idUsuario = auth()->user()->id;
+        $specialties = Specialty::where('user_id', $idUsuario)->get();
+        //$specialties = Specialty::we();  
         return view('specialties.index', compact('specialties'));
     }
     public function create(){
+
+
+
+
         return view('specialties.create');
+
+
     }
     public function sendData(Request $request){
         $rules = [
@@ -29,8 +38,7 @@ class SpecialtyController extends Controller
             'trimestre'=>'required|numeric',
 
             'fecha'=>'required',
-            'hora_inicio'=>'required',
-            'hora_fin'=>'required',
+            'hora'=>'required',
 
             'grado'=>'required|numeric',
             'seccion'=>'required',
@@ -44,15 +52,13 @@ class SpecialtyController extends Controller
             'trimestre.required'=>'Se requiere el trimestre',
             'trimestre.numeric'=>'Trimestre debe ser un valor numerico',
             'fecha.required'=>'Se requiere la fecha',
-            'hora_inicio.required'=>'Se requiere la hora de inicio',
-            'hora_fin.required'=>'Se requiere la hora de finalizacion',
+            'hora.required'=>'Se requiere la hora de inicio',
             'grado.required'=>'Se requiere el grado',
             'grado.numeric'=>'Grado debe ser un valor numerico',
             'seccion.required'=>'Se requierela seccion',
             'aprendizaje.required'=>'Se requiere el aprendizaje',
             'articula.required'=>'Se requiere una repuesta (si o no)',
             'estrategias.required'=>'Se requiere una estrategia'
-            
         ];
 
         $this->validate($request,$rules,$messages);
@@ -94,6 +100,7 @@ class SpecialtyController extends Controller
                 'asignatura'=>'required',
                 'trimestre'=>'required',
                 'hora'=>'required',
+                'fecha'=>'required',
                 'grado'=>'required',
                 'seccion'=>'required',
                 'aprendizaje'=>'required',
@@ -109,17 +116,20 @@ class SpecialtyController extends Controller
                 'seccion.required'=>'Se requierela seccion',
                 'aprendizaje.required'=>'Se requiere el aprendizaje',
                 'articula.required'=>'Se requiere una repuesta (si o no)',
-                'estrategias.required'=>'Se requiere una estrategia'
+                'estrategias.required'=>'Se requiere una estrategia',
+                'fecha.required'=>'Se requiere la fecha'
                 
             ];
             $this->validate($request,$rules,$messages);
     
-            
+            Log::info($request);
+
             $specialty->nombre = $request->input('nombre');
             $specialty->asignatura = $request->input('asignatura');
             $specialty->trimestre = $request->input('trimestre');
             $specialty->hora = $request->input('hora');
             $specialty->grado = $request->input('grado');
+            $specialty->dia = $request->input('fecha');
             $specialty->seccion = $request->input('seccion');
             $specialty->aprendizaje = $request->input('aprendizaje');
             $specialty->consideraciones = $request->input('consideraciones');
