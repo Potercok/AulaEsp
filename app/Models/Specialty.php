@@ -35,4 +35,25 @@ class Specialty extends Model
         return $this->hasMany(Specialty::class,'user_id');
     }
 
+    // app/Models/Specialty.php
+    public function logs()
+    {
+        return $this->hasMany(SpecialtyLog::class, 'specialty_id');
+    }
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::deleting(function ($specialty) {
+            // Eliminar la entrada correspondiente en la bitácora
+            SpecialtyLog::where('specialty_id', $specialty->id)->delete();
+        });
+    }
+
+    // Relación con SpecialtyLog
+    public function specialtyLog()
+    {
+        return $this->hasOne(SpecialtyLog::class, 'specialty_id');
+    }
 }

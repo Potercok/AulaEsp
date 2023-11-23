@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\SpecialtyLog;
 use Illuminate\Http\Request;
 use App\Models\Specialty;
 use Illuminate\Support\Facades\Log;
@@ -22,13 +23,7 @@ class SpecialtyController extends Controller
         return view('specialties.index', compact('specialties'));
     }
     public function create(){
-
-
-
-
         return view('specialties.create');
-
-
     }
     public function sendData(Request $request){
         $rules = [
@@ -86,6 +81,18 @@ class SpecialtyController extends Controller
         $notification='La reserva se ha creado exitosamente.';
 
         $specialty->save();
+
+        //Se guarda el log
+        $log = new SpecialtyLog();
+        $log->specialty_id = $specialty->id;
+        $log->user_id = auth()->id();
+        $log->fecha = $specialty->dia;// La fecha actual
+        $log->grado = $specialty->grado;
+        $log->seccion = $specialty->seccion;
+        $log->horas_reservadas = 1; // Una hora reservada
+        $log->save();
+
+
         return redirect('/especialidades')->with(compact('notification'));
     }
         public function edit(Specialty $specialty)
@@ -121,8 +128,6 @@ class SpecialtyController extends Controller
                 
             ];
             $this->validate($request,$rules,$messages);
-    
-            Log::info($request);
 
             $specialty->nombre = $request->input('nombre');
             $specialty->asignatura = $request->input('asignatura');
@@ -142,6 +147,19 @@ class SpecialtyController extends Controller
             $notification='La reserva de '. $guardar .' se ha actualizado exitosamente.';
 
             $specialty->save();
+
+            if ($specialty->isDirty()) 
+            {
+                $log = new SpecialtyLog();
+                $log->specialty_id = $specialty->id;
+                $log->user_id = auth()->id();
+                $log->fecha = now(); // La fecha actual
+                $log->grado = $specialty->grado;
+                $log->seccion = $specialty->seccion;
+                $log->horas_reservadas = 1; // Una hora reservada
+            $log->save();
+            }   
+
             return redirect('/especialidades')->with(compact('notification'));
         }
         

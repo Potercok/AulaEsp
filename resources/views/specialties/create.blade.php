@@ -29,13 +29,30 @@
                 <label for="name">Nombre del profesor</label>
                 <input type="text" name="nombre" class="form-control" readonly value="{{auth()->user()->name}}" required>
             </div>
+
             <div class="form-group">
-                <label for="description">Asignatura</label>
-                <input type="text" name="asignatura" class="form-control" value="{{old('asignatura')}}" required>
+
+            <label for="description">Asignatura:</label>
+                <select name="asignatura" class="form-control">
+                    <option  disabled selected>-Elige una Asignatura-</option>
+                    <option value="Español"{{ old('asignatura') == 'Español' ? 'selected' : '' }}>Español</option>
+                    <option value="Educación Física"{{ old('asignatura') == 'Educación Física' ? 'selected' : '' }}>Educación Física</option>
+                    <option value="Matematicas"{{ old('asignatura') == 'Matematicas' ? 'selected' : '' }}>Matematicas</option>
+                    <option value="Inglés"{{ old('asignatura') == 'Inglés' ? 'selected' : '' }}>Inglés</option>
+                    <option value="Matematicas"{{ old('asignatura') == 'Matematicas' ? 'selected' : '' }}>Matematicas</option>
+                    <option value="Química"{{ old('asignatura') == 'Química' ? 'selected' : '' }}>Química</option>
+                </select>
+
             </div>
+
             <div class="form-group">
-                <label for="description">Trimestre</label>
-                <input type="integer" name="trimestre" class="form-control" value="{{old('trimestre')}}" required>
+            <label for="description">Trimestre:</label>
+                <select name="trimestre" class="form-control">
+                    <option  disabled selected>-Elige el trimestre-</option>
+                    <option value="1"{{ old('trimestre') == '1' ? 'selected' : '' }}>1</option>
+                    <option value="2"{{ old('trimestre') == '2' ? 'selected' : '' }}>2</option>
+                    <option value="3"{{ old('trimestre') == '3' ? 'selected' : '' }}>3</option>
+                </select>
             </div>
 
             <div class="form-group">
