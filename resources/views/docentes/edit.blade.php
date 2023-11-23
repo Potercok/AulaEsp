@@ -34,7 +34,7 @@
                 <input type="text" name="name" class="form-control" value="{{old('name',$docente->name)}}">
             </div>
             <div class="form-group">
-                <label for="email">Correo electronico</label>
+                <label for="email">Correo electrónico</label>
                 <input type="text" name="email" class="form-control" value="{{old('email',$docente->email)}}">
             </div>
             <div class="form-group">

@@ -85,7 +85,7 @@
             </div>
 
             <div class="form-group">
-            <label for="description">Seccion:</label>
+            <label for="description">Sección:</label>
             <select name="seccion" class="form-control" value="{{old('seccion')}}" required>
                 <option  disabled selected>-Elige una Seccion-</option>
                 <option value="A"{{ old ('seccion') == 'A' ? 'selected' : '' }}>A</option>
@@ -114,7 +114,7 @@
                 <input type="text" name="estrategias" class="form-control" value="{{old('estrategias')}}" required>
             </div>
             <div class="form-group">
-                <label for="description">Descripcionn</label>
+                <label for="description">Descripción</label>
                 <input type="text" name="descripcion" class="form-control" value="{{old('descripcion')}}">
             </div>
             <div class="form-group">

@@ -65,7 +65,7 @@
                     <option value="3" {{ (old('grado', $specialty->grado) == "3") ? 'selected' : '' }}>3</option>
                 </select>
                 <label for="description">&emsp;&emsp;</label>
-                <label for="description">Seccion:</label>
+                <label for="description">Sección:</label>
                 <select name="seccion">
                     <option value="A" {{ (old('seccion', $specialty->seccion) == "A") ? 'selected' : '' }}>A</option>
                     <option value="B" {{ (old('seccion', $specialty->seccion) == "B") ? 'selected' : '' }}>B</option>
@@ -75,7 +75,7 @@
                     <option value="F" {{ (old('seccion', $specialty->seccion) == "F") ? 'selected' : '' }}>F</option>
                 </select>
             </div>
-            <label for="description">Dia</label>
+            <label for="description">Día</label>
             <div class="input-group">
                 <div class="input-group-prepend">
                     <span class="input-group-text"><i class="ni ni-calendar-grid-58"></i></span>
@@ -102,7 +102,7 @@
                 <input type="text" name="estrategias" class="form-control" value="{{old('estrategias',$specialty->estrategias)}}" required>
             </div>
             <div class="form-group">
-                <label for="description">Descripcionn:</label>
+                <label for="description">Descripción:</label>
                 <input type="text" name="descripcion" class="form-control" value="{{old('descripcion',$specialty->descripcion)}}">
             </div>
             <div class="form-group">

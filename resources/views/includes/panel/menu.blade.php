@@ -7,7 +7,7 @@
           
           <li class="nav-item  active ">
             <a class="nav-link  active " href="{{url ('/home')}}">
-              <i class="ni ni-tv-2 text-primary"></i> Pagina principal
+              <i class="ni ni-tv-2 text-primary"></i> Página principal
             </a>
           </li>
           
@@ -47,14 +47,14 @@
           @endif
           <li class="nav-item">
             <a class="nav-link " href="{{url('/bitacora')}}">
-              <i class="ni ni-bullet-list-67 text-red"></i> Bitacora
+              <i class="ni ni-bullet-list-67 text-red"></i> Bitácora
             </a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="{{route('logout')}}"
              onclick="event.preventDefault(); document.getElementById('formLogout').submit();"
              >
-              <i class="fas fa-sign-in-alt"></i> Cerrar sesion
+              <i class="fas fa-sign-in-alt"></i> Cerrar sesión
             </a>
             <Form action="{{route('logout')}}" method="POST" style="display:none;"id="formLogout">
             @csrf 

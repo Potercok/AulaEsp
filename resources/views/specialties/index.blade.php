@@ -26,9 +26,9 @@
              <tr>
                  <th scope= "col">Nombre </th>
                  <th scope= "col" >Asignatura</th>
-                 <th scope= "col" >Dia</th>
+                 <th scope= "col" >Día</th>
                  <th scope= "col" >Hora</th>
-                 <th scope= "col" >Seccion</th>
+                 <th scope= "col" >Sección</th>
                  <th scope= "col">Grado </th>
                  <th scope="col" >Opciones </th>
                  <!--<th scope="col" >Bounce rate</th>-->
@@ -47,7 +47,7 @@
                         {{$especialidad->dia}}
                     </td>
                     <td>
-                        {{$especialidad->hora_format}}
+                        {{$especialidad->hora_format}}:00
                     </td>
                     <td>
                         {{$especialidad->seccion}}
