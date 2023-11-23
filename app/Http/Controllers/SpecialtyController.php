@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\SpecialtyLog;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Models\Specialty;
 use Illuminate\Support\Facades\Log;
 
@@ -18,8 +19,7 @@ class SpecialtyController extends Controller
     public function index()
     {  
         $idUsuario = auth()->user()->id;
-        $specialties = Specialty::where('user_id', $idUsuario)->get();
-        //$specialties = Specialty::we();  
+        $specialties = Specialty::select('*', DB::raw('HOUR(hora) as hora_format'))->where('user_id', $idUsuario)->get();
         return view('specialties.index', compact('specialties'));
     }
     public function create(){
@@ -61,6 +61,7 @@ class SpecialtyController extends Controller
         $specialty = new Specialty();
 
         // Assign the user_id
+        
         $specialty->user_id = auth()->user()->id;
 
         $specialty->nombre = $request->input('nombre');
@@ -77,6 +78,7 @@ class SpecialtyController extends Controller
         $specialty->estrategias = $request->input('estrategias');
         $specialty->descripcion = $request->input('descripcion');
         $specialty->observaciones = $request->input('observaciones');
+        
 
         $notification='La reserva se ha creado exitosamente.';
 

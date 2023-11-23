@@ -32,11 +32,18 @@
             let eventsList = document.getElementById('eventsList');
             eventsList.innerHTML = ''; // Limpia el contenido actual
 
+            if (dateEvents.length > 0) {
             dateEvents.forEach(event => {
                 let eventDiv = document.createElement('div');
-                eventDiv.innerHTML = event.title; 
+                eventDiv.innerHTML = event.title;
                 eventsList.appendChild(eventDiv);
             });
+        } else {
+            // No hay reservas, muestra un mensaje
+            let noReservationsDiv = document.createElement('div');
+            noReservationsDiv.innerHTML = 'No hay reservas para este día.';
+            eventsList.appendChild(noReservationsDiv);
+        }
 
             // Muestra el modal
             var myModal = new bootstrap.Modal(document.getElementById('eventsModal'), {});

@@ -47,7 +47,7 @@
                         {{$especialidad->dia}}
                     </td>
                     <td>
-                        {{$especialidad->hora}}
+                        {{$especialidad->hora_format}}
                     </td>
                     <td>
                         {{$especialidad->seccion}}
