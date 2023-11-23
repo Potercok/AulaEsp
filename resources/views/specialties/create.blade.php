@@ -27,7 +27,7 @@
             @csrf
             <div class="form-group">
                 <label for="name">Nombre del profesor</label>
-                <input type="text" name="nombre" class="form-control" value="{{old('name')}}" required>
+                <input type="text" name="nombre" class="form-control" readonly value="{{auth()->user()->name}}" required>
             </div>
             <div class="form-group">
                 <label for="description">Asignatura</label>
