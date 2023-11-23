@@ -94,9 +94,9 @@ class BitacoraController extends Controller
         // Devuelve el PDF o redirige según tu lógica
     }
     public function store(Request $request)
-{
-    // Aquí colocas la lógica para almacenar datos en la base de datos
-}
+    {
+        // Aquí colocas la lógica para almacenar datos en la base de datos
+    }
 
     
     // Puedes eliminar o comentar la función store si no la utilizas
