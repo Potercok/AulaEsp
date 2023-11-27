@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Specialty;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 
 class AppointmentController extends Controller
 {
@@ -24,39 +25,40 @@ class AppointmentController extends Controller
      */
     public function store(Request $request)
     {
-        //Validamos los campos
+
         $this->validate($request, [
-                'nombre'=>'required|min:3',
-                'asignatura'=>'required',
-                'trimestre'=>'required|numeric',
-                'fecha'=>'required',
-                'hora_inicio'=>'required',
-                'hora_fin'=>'required',
-                'grado'=>'required|numeric',
-                'seccion'=>'required',
-                'aprendizaje'=>'required',
-                'articula'=>'required',
-                'estrategias'=>'required'
-            ]
-        );
+            'registro' => 'required'
+        ]);
+
+        // Obtener la cadena JSON desde la solicitud
+        $jsonString = $request->registro;
+
+        // Decodificar la cadena JSON a un objeto de PHP
+        $registro = json_decode($jsonString);
+
+        Log::info($request->all());
 
         $specialty = new Specialty();
-        $specialty->nombre = $request->input('nombre');
-        $specialty->asignatura = $request->input('asignatura');
-        $specialty->trimestre = $request->input('trimestre');
+        $specialty->nombre = $registro->nombre;
+        $specialty->asignatura = $registro->asignatura;
+        $specialty->trimestre = $registro->trimestre;
 
         //Datos de horarios
-        $specialty->fecha= $request->input('dia');
-        $specialty->hora_inicio = $request->input('hora');
+        $specialty->dia= $registro->fecha;
+        $specialty->hora = $registro->hora;
 
-        $specialty->grado = $request->input('grado');
-        $specialty->seccion = $request->input('seccion');
-        $specialty->aprendizaje = $request->input('aprendizaje');
-        $specialty->consideraciones = $request->input('consideraciones');
-        $specialty->articula = $request->input('articula');
-        $specialty->estrategias = $request->input('estrategias');
-        $specialty->descripcion = $request->input('descripcion');
-        $specialty->observaciones = $request->input('observaciones');
+        $specialty->grado = $registro->grado;
+        $specialty->seccion = $registro->seccion;
+        $specialty->aprendizaje = $registro->aprendizaje;
+        $specialty->consideraciones = $registro->consideraciones;
+        $specialty->articula = $registro->articula;
+        $specialty->estrategias = $registro->estrategias;
+        $specialty->descripcion = $registro->descripcion;
+        $specialty->observaciones = $registro->observaciones;
+        $specialty->user_id = auth()->user()->id;
+        $specialty->save();
+
+        return response()->json('Reserva creada correctamente');
     }
 
     /**
