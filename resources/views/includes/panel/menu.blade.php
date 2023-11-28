@@ -11,7 +11,7 @@
             </a>
           </li>
           
-          @if(auth()->user()->role == 'docente' || auth()->user()->role == 'admin')
+          @if(auth()->user()->role == 'docente')
             <li class="nav-item">
               <a class="nav-link " href="{{ url('/especialidades') }}">
                 <i class="ni ni-archive-2 text-blue"></i> Mis Reservas
@@ -42,6 +42,11 @@
               <i class="ni ni-badge text-success"></i> Docentes
             </a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/admin">
+              <i class="ni ni-key-25 text-info"></i> Todas las reservas
+            </a>
+          </li>
            <!-- divisor --> <!-- divisor --> <!-- divisor --> <!-- divisor --> <!-- divisor --> <!-- divisor --> <!-- divisor -->
           
           @endif
@@ -63,30 +68,4 @@
         </ul>
         <!-- divisor -->
         <hr class="my-3">
-        <!-- Heading 
-        <h6 class="navbar-heading text-muted">Documentacion</h6>-->
-        <!-- Navigation 
-        <ul class="navbar-nav mb-md-3">
-          <li class="nav-item">
-            <a class="nav-link" href="https://demos.creative-tim.com/argon-dashboard/docs/getting-started/overview.html">
-              <i class="ni ni-spaceship"></i> Getting started
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="https://demos.creative-tim.com/argon-dashboard/docs/foundation/colors.html">
-              <i class="ni ni-palette"></i> Foundation
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="https://demos.creative-tim.com/argon-dashboard/docs/components/alerts.html">
-              <i class="ni ni-ui-04"></i> Components
-            </a>
-          </li>
-        </ul>
-        <ul class="navbar-nav">
-          <li class="nav-item active active-pro">
-            <a class="nav-link" href="./examples/upgrade.html">
-              <i class="ni ni-send text-dark"></i> Upgrade to PRO
-            </a>
-          </li>
-        </ul>-->
+    

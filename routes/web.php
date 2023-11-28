@@ -14,6 +14,7 @@ use App\Http\Controllers\EstadisticasController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\VerificationController;
+use App\Http\Controllers\adminController;
 
 Route::get('/', function () {
     return view('auth/login');
@@ -29,6 +30,9 @@ Route::middleware(['auth', 'admin'])->group(function () {
     //rutas de docentes
     Route::resource('docentes', DocenteController::class);
     Route::get('/estadisticas', [EstadisticasController::class, 'index']);
+    Route::get('/admin', [adminController::class,'index']);
+    Route::delete('/admin/{specialty}', [adminController::class, 'destroy']);
+    
 });
 Route::get('/especialidades', [SpecialtyController::class, 'index']);
 Route::get('/especialidades/create', [SpecialtyController::class, 'create']);
